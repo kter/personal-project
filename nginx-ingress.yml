@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "blog"
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - secretName: kubernetes-ingress-tls
+    hosts:
+      - blog.kter.jp
+  rules:
+    - host: blog.kter.jp
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: wordpress
+            servicePort: 80
+  backend:
+    serviceName: wordpress
+    servicePort: 80
