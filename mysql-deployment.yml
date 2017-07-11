@@ -12,7 +12,7 @@ spec:
         name: mysql
     spec:
       nodeSelector:
-        cloud.google.com/gke-nodepool: db-pool
+        cloud.google.com/gke-nodepool: default-pool
       containers:
         - image: mysql:5.6.36
           name: mysql
