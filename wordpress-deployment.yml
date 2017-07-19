@@ -36,11 +36,10 @@ spec:
                   key: wordpress_db_host
           volumeMounts:
               # This name must match the volumes.name below.
-            - name: wordpress-data
+            - name: nfs
               mountPath: "/var/www/html"
       volumes:
-        - name: wordpress-data
-          gcePersistentDisk:
-            # This disk must already exist.
-            pdName: blog-data
-            fsType: ext4
+        - name: nfs
+          nfs:
+            server: 10.11.249.76
+            path: "/exports"
