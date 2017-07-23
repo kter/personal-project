@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: postgres
+  labels:
+    name: postgres
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: postgres
+    spec:
+      nodeSelector:
+        cloud.google.com/gke-nodepool: default-pool
+      containers:
+        - image: postgres:9.6.3
+          name: postgres
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: postgres_password
+          ports:
+            - containerPort: 5432
+              name: postgres
+          volumeMounts:
+            - name: postgres-db-data
+              mountPath: "/var/lib/postgresql"
+      volumes:
+        - name: postgres-db-data
+          gcePersistentDisk:
+            pdName: pgsql-db-data
+            fsType: ext4

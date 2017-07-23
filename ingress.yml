@@ -50,6 +50,7 @@ spec:
   - hosts:
     - blog.kter.jp
     - kter.jp
+    - wallet.kter.jp
     secretName: blog-tls
   rules:
   - host: blog.kter.jp
@@ -66,6 +67,13 @@ spec:
         backend:
           serviceName: wordpress
           servicePort: 80
+  - host: wallet.kter.jp
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: wallet
+          servicePort: 3000
 ---
 apiVersion: v1
 kind: ConfigMap
