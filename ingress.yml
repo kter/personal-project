@@ -9,18 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - blog.kter.jp
     - kter.jp
     - wallet.kter.jp
     secretName: blog-tls
   rules:
-  - host: blog.kter.jp
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: wordpress-redirect
-          servicePort: 80
   - host: kter.jp
     http:
       paths:
