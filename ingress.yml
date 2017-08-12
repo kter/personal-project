@@ -19,7 +19,7 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: wordpress
+          serviceName: wordpress-redirect
           servicePort: 80
   - host: kter.jp
     http:
