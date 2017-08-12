@@ -11,6 +11,7 @@ spec:
   - hosts:
     - kter.jp
     - wallet.kter.jp
+    - prometheus.kter.jp
     secretName: blog-tls
   rules:
   - host: kter.jp
@@ -27,10 +28,19 @@ spec:
         backend:
           serviceName: wallet
           servicePort: 3000
+  - host: prometheus.kter.jp
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: solid-quetzal-prometheus-server
+          servicePort: 80
   backend:
     serviceName: wallet
     servicePort: 3000
     serviceName: wordpress
+    servicePort: 80
+    serviceName: solid-quetzal-prometheus-server
     servicePort: 80
 ---
 apiVersion: v1
