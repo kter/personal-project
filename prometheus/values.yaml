@@ -293,7 +293,8 @@ server:
 
   ## Additional Prometheus server container arguments
   ##
-  extraArgs: {}
+  extraArgs:
+    storage.local.retention: 744h
 
   ## Additional Prometheus server hostPath mounts
   ##
@@ -310,23 +311,23 @@ server:
 
     ## Prometheus server Ingress annotations
     ##
-    annotations: {}
-    #   kubernetes.io/ingress.class: nginx
-    #   kubernetes.io/tls-acme: 'true'
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: 'true'
 
     ## Prometheus server Ingress hostnames
     ## Must be provided if Ingress is enabled
     ##
-    hosts: []
-    #   - prometheus.domain.com
+    hosts:
+      - prometheus.kter.jp
 
     ## Prometheus server Ingress TLS configuration
     ## Secrets must be manually created in the namespace
     ##
-    tls: []
-    #   - secretName: prometheus-server-tls
-    #     hosts:
-    #       - prometheus.domain.com
+    tls:
+      - secretName: prometheus-server-tls
+        hosts:
+          - prometheus.kter.jp
 
   ## Node labels for Prometheus server pod assignment
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
