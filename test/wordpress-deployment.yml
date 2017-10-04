@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: blog
+  labels:
+    name: blog
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: blog
+    spec:
+      nodeSelector:
+        cloud.google.com/gke-nodepool: default-pool
+      containers:
+        - name: blog
+          image: wordpress:4.8.2-php7.1-apache
+          ports:
+            - containerPort: 80
+          env:
+            - name: WORDPRESS_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: wordpress_db_password
+            - name: WORDPRESS_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: wordpress_db_user
+            - name: WORDPRESS_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: wordpress_db_host
+          volumeMounts:
+              # This name must match the volumes.name below.
+            - name: nfs
+              mountPath: "/var/www/html"
+      volumes:
+        - name: nfs
+          nfs:
+            server: 10.11.248.240
+            path: "/exports"
