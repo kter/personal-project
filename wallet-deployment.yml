@@ -15,9 +15,9 @@ spec:
         cloud.google.com/gke-nodepool: default-pool
       containers:
         - name: wallet
-          image: docker.io/kter/wallet:0.3
+          image: docker.io/kter/wallet:0.8
           ports:
-            - containerPort: 3000
+            - containerPort: 3300
           env:
             - name: SECRET_KEY_BASE
               valueFrom:
@@ -39,3 +39,19 @@ spec:
                 secretKeyRef:
                   name: app-secrets
                   key: postgres_host
+          livenessProbe:
+            exec:
+              command:
+                - cat
+                - tmp/pids/server.pid
+            # first prob
+            initialDelaySeconds: 5
+            # interval
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /wallets
+              port: 3300
+            initialDelaySeconds: 5
+            periodSeconds: 20
+            timeoutSeconds: 10

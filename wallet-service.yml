@@ -6,8 +6,8 @@ metadata:
     name: wallet
 spec:
   ports:
-    - port: 3000
-      targetPort: 3000
+    - port: 3300
+      targetPort: 3300
       protocol: TCP
   type: NodePort
   selector:
