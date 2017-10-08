@@ -14,29 +14,24 @@ spec:
       - kter.jp
       - wallet.kter.jp
   rules:
-    - host: blog.kter.jp
-      http:
-        paths:
-        - path: /
-          backend:
-            serviceName: wordpress
-            servicePort: 80
-    - host: kter.jp
-      http:
-        paths:
-        - path: /
-          backend:
-            serviceName: wordpress
-            servicePort: 80
-    - host: wallet.kter.jp
-      http:
-        paths:
-        - path: /
-          backend:
-            serviceName: wallet
-            servicePort: 3300
-  backend:
-    serviceName: wordpress
-    servicePort: 80
-    serviceName: wallet
-    servicePort: 3300
+  - host: blog.kter.jp
+    http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: wordpress
+          servicePort: 80
+  - host: kter.jp
+    http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: wordpress
+          servicePort: 80
+  - host: wallet.kter.jp
+    http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: wallet
+          servicePort: 3300
