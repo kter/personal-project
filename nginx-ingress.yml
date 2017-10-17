@@ -26,4 +26,4 @@ spec:
       - path: /*
         backend:
           serviceName: wallet
-          servicePort: 3300
+          servicePort: 80
