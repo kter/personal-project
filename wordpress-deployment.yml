@@ -4,6 +4,7 @@ metadata:
   name: blog
   labels:
     name: blog
+  namespace: blog
 spec:
   replicas: 1
   template:
@@ -22,17 +23,17 @@ spec:
             - name: WORDPRESS_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: app-secrets
+                  name: blog-secrets
                   key: wordpress_db_password
             - name: WORDPRESS_DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: app-secrets
+                  name: blog-secrets
                   key: wordpress_db_user
             - name: WORDPRESS_DB_HOST
               valueFrom:
                 secretKeyRef:
-                  name: app-secrets
+                  name: blog-secrets
                   key: wordpress_db_host
           volumeMounts:
               # This name must match the volumes.name below.
@@ -41,5 +42,5 @@ spec:
       volumes:
         - name: nfs
           nfs:
-            server: 10.11.248.240
+            server: 10.11.253.173
             path: "/exports"

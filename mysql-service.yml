@@ -4,6 +4,7 @@ metadata:
   name: mysql
   labels:
     name: mysql
+  namespace: blog
 spec:
   ports:
     - port: 3306

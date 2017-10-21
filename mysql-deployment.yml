@@ -4,6 +4,7 @@ metadata:
   name: mysql
   labels:
     name: mysql
+  namespace: blog
 spec:
   replicas: 1
   template:
@@ -20,7 +21,7 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: app-secrets
+                  name: blog-secrets
                   key: mysql_password
           ports:
             - containerPort: 3306

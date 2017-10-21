@@ -4,6 +4,7 @@ metadata:
   name: wordpress
   labels:
     name: wordpress
+  namespace: blog
 spec:
   ports:
     - port: 80
