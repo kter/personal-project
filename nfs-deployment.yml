@@ -26,6 +26,5 @@ spec:
             name: nfs-disk
       volumes:
         - name: nfs-disk
-          gcePersistentDisk:
-            pdName: blog-data-nfs-3
-            fsType: ext4
+          hostPath:
+            path: /data/blog-data-nfs-3
