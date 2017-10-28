@@ -41,5 +41,5 @@ spec:
       volumes:
         - name: nfs
           nfs:
-            server: 10.11.249.89
+            server: 10.0.0.90
             path: "/exports"
