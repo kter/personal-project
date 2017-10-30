@@ -15,6 +15,10 @@ spec:
   - host: kter.jp
     http:
       paths:
+      - path: /
+        backend:
+          serviceName: wordpress
+          servicePort: 80
       - path: /*
         backend:
           serviceName: wordpress
@@ -22,6 +26,10 @@ spec:
   - host: wallet.kter.jp
     http:
       paths:
+      - path: /
+        backend:
+          serviceName: wallet
+          servicePort: 80
       - path: /*
         backend:
           serviceName: wallet
