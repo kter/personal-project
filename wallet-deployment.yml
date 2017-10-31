@@ -11,8 +11,6 @@ spec:
       labels:
         name: wallet
     spec:
-      nodeSelector:
-        cloud.google.com/gke-nodepool: default-pool
       containers:
         - name: wallet
           image: docker.io/kter/wallet:1.0
@@ -45,13 +43,13 @@ spec:
             httpGet:
               path: /
               port: 80
-            initialDelaySeconds: 5
-            periodSeconds: 20
-            timeoutSeconds: 10
+            initialDelaySeconds: 120
+            periodSeconds: 120
+            timeoutSeconds: 60
           readinessProbe:
             httpGet:
               path: /wallets
               port: 80
-            initialDelaySeconds: 5
-            periodSeconds: 20
-            timeoutSeconds: 10
+            initialDelaySeconds: 120
+            periodSeconds: 120
+            timeoutSeconds: 60

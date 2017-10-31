@@ -11,8 +11,6 @@ spec:
       labels:
         name: blog
     spec:
-      nodeSelector:
-        cloud.google.com/gke-nodepool: default-pool
       containers:
         - name: blog
           image: wordpress:4.8.2-php7.1-apache
@@ -41,5 +39,5 @@ spec:
       volumes:
         - name: nfs
           nfs:
-            server: 10.11.249.89
+            server: 10.0.0.90
             path: "/exports"

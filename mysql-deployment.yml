@@ -11,8 +11,6 @@ spec:
       labels:
         name: mysql
     spec:
-      nodeSelector:
-        cloud.google.com/gke-nodepool: default-pool
       containers:
         - image: mysql:5.6.36
           name: mysql
@@ -30,6 +28,5 @@ spec:
               mountPath: "/var/lib/mysql"
       volumes:
         - name: mysql-db-data
-          gcePersistentDisk:
-            pdName: db-data
-            fsType: ext4
+          hostPath:
+            path: /data/mysql-db-data
