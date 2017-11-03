@@ -11,6 +11,8 @@ spec:
     hosts:
       - kter.jp
       - wallet.kter.jp
+      - mail.ttakahashi.space
+      - ttakahashi.space
   rules:
   - host: kter.jp
     http:
@@ -33,4 +35,18 @@ spec:
       - path: /*
         backend:
           serviceName: wallet
+          servicePort: 80
+  - host: mail.ttakahashi.space
+    http:
+      paths:
+      - path: "/admin"
+        backend:
+          serviceName: mailu-admin
+          servicePort: 80
+  - host: ttakahashi.space
+    http:
+      paths:
+      - path: "/admin"
+        backend:
+          serviceName: mailu-admin
           servicePort: 80

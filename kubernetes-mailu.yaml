@@ -1,26 +1,26 @@
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: mailu-admin-ing
-  labels:
-    app: mailu
-    role: mail
-    tier: backend
-spec:
-  tls:
-  - hosts:
-    - "mail.example.com"
-    secretName: letsencrypt-certs-all # If unsure how to generate these, check out https://github.com/ployst/docker-letsencrypt
-  rules:
-  - host: "mail.example.com"
-    http:
-      paths:
-      - path: "/admin"
-        backend:
-          serviceName: mailu-admin
-          servicePort: 80
-
+#---
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: mailu-admin-ing
+#  labels:
+#    app: mailu
+#    role: mail
+#    tier: backend
+#spec:
+#  tls:
+#  - hosts:
+#    - "mail.ttakahashi.space"
+#    secretName: kubernetes-ingress-tls # If unsure how to generate these, check out https://github.com/ployst/docker-letsencrypt
+#  rules:
+#  - host: "mail.ttakahashi.space"
+#    http:
+#      paths:
+#      - path: "/admin"
+#        backend:
+#          serviceName: mailu-admin
+#          servicePort: 80
+#
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -92,9 +92,9 @@ spec:
         imagePullPolicy: Always
         env:
           - name  : DOMAIN
-            value : example.com
+            value : ttakahashi.space
           - name  : HOSTNAME
-            value : mail.example.com
+            value : mail.ttakahashi.space
           - name  : POSTMASTER
             value : admin
         volumeMounts:
@@ -127,10 +127,10 @@ spec:
           secret:
             items:
               - key: tls.crt
-                path: cert.pem
+                path: tls.crt
               - key: tls.key
-                path: key.pem
-            secretName: letsencrypt-certs-all
+                path: tls.key
+            secretName: kubernetes-ingress-tls
 
 ---
 
@@ -186,9 +186,9 @@ spec:
         imagePullPolicy: Always
         env:
           - name  : DOMAIN
-            value : example.com
+            value : ttakahashi.space
           - name  : HOSTNAME
-            value : mail.example.com
+            value : mail.ttakahashi.space
           - name  : MESSAGE_SIZE_LIMIT
             value : "50000000"
           - name  : RELAYHOST
@@ -224,8 +224,8 @@ spec:
               - key: tls.crt
                 path: cert.pem
               - key: tls.key
-                path: key.pem
-            secretName: letsencrypt-certs-all
+                path: tls.key
+            secretName: kubernetes-ingress-tls
 
 ---
 
@@ -302,8 +302,8 @@ spec:
               - key: tls.crt
                 path: cert.pem
               - key: tls.key
-                path: key.pem
-            secretName: letsencrypt-certs-all
+                path: tls.key
+            secretName: kubernetes-ingress-tls
 
 ---
 
@@ -427,9 +427,9 @@ spec:
         imagePullPolicy: Always
         env:
           - name  : DOMAIN
-            value : example.com
+            value : ttakahashi.space
           - name  : HOSTNAME
-            value : mail.example.com
+            value : mail.ttakahashi.space
           - name  : POSTMASTER
             value : core
           - name  : SECRET_KEY
@@ -464,8 +464,8 @@ spec:
               - key: tls.crt
                 path: cert.pem
               - key: tls.key
-                path: key.pem
-            secretName: letsencrypt-certs-all
+                path: tls.key
+            secretName: kubernetes-ingress-tls
         # - name: docker
         #   hostPath:
         #     path: /var/run/docker.sock
