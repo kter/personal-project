@@ -199,7 +199,7 @@ spec:
           secret:
             items:
               - key: tls.crt
-                path: cert.pem
+                path: tls.crt
               - key: tls.key
                 path: tls.key
             secretName: kubernetes-ingress-tls
@@ -277,7 +277,7 @@ spec:
           secret:
             items:
               - key: tls.crt
-                path: cert.pem
+                path: tls.crt
               - key: tls.key
                 path: tls.key
             secretName: kubernetes-ingress-tls
@@ -439,7 +439,7 @@ spec:
           secret:
             items:
               - key: tls.crt
-                path: cert.pem
+                path: tls.crt
               - key: tls.key
                 path: tls.key
             secretName: kubernetes-ingress-tls
