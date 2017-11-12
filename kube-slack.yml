@@ -19,7 +19,10 @@ spec:
         image: willwill/kube-slack:v3.0.3
         env:
         - name: SLACK_URL
-          value: https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: kube_slack_url
         resources:
           requests:
             memory: 30M
