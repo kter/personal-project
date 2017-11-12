@@ -65,7 +65,7 @@ spec:
     spec:
       containers:
       - name: imap
-        image: mailu/dovecot:stable
+        image: kter/mailu-dovecot:1.0
         imagePullPolicy: Always
         env:
           - name  : DOMAIN
@@ -159,7 +159,7 @@ spec:
     spec:
       containers:
       - name: smtp
-        image: mailu/postfix:stable
+        image: kter/mailu-postfix:1.0
         imagePullPolicy: Always
         env:
           - name  : DOMAIN
