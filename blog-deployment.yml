@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: blog
-          image: wordpress:4.8.2-php7.1-apache
+          image: wordpress:4.8.3-php7.1-apache
           ports:
             - containerPort: 80
           env:
