@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: shinkansenice
+  labels:
+    name: shinkansenice
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: shinkansenice
+    spec:
+      containers:
+        - name: shinkansenice
+          image: docker.io/kter/shinkancenice:0.2
+          env:
+            - name: SSKABOT_CONSUMER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: sskabot_consumer_key
+            - name: SSKABOT_CONSUMER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: sskabot_consumer_secret
+            - name: SSKABOT_ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: sskabot_access_token
+            - name: SSKABOT_ACCESS_TOKEN_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: sskabot_access_token_secret
