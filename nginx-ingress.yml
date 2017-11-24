@@ -11,6 +11,7 @@ spec:
     hosts:
       - kter.jp
       - wallet.kter.jp
+      - jenkins.kter.jp
   rules:
   - host: kter.jp
     http:
@@ -34,3 +35,14 @@ spec:
         backend:
           serviceName: wallet
           servicePort: 80
+  - host: jenkins.kter.jp
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: jenkins
+          servicePort: 8080
+      - path: /*
+        backend:
+          serviceName: jenkins
+          servicePort: 8080

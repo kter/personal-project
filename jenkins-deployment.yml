@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jenkins
+  labels:
+    name: jenkins
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: jenkins
+    spec:
+      containers:
+        - image: jenkins:2.60.3
+          name: jenkins
+          ports:
+            - containerPort: 8080
+              name: jenkins
+          volumeMounts:
+            - name: jenkins
+              mountPath: "/var/jenkins_home"
+      volumes:
+        - name: jenkins
+          hostPath:
+            path: /data/jenkins
