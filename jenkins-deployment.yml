@@ -24,3 +24,5 @@ spec:
         - name: jenkins
           hostPath:
             path: /data/jenkins
+      nodeSelector:
+        kubernetes.io/hostname: kube-master-01

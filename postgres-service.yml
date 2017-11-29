@@ -14,6 +14,6 @@ metadata:
   name: postgres
 subsets:
   - addresses:
-      - ip: 108.61.180.213
+      - ip: 45.77.18.209
     ports:
       - port: 5432
