@@ -30,3 +30,5 @@ spec:
         - name: mysql-db-data
           hostPath:
             path: /data/mysql-db-data
+      nodeSelector:
+        kubernetes.io/hostname: kube-master-01
