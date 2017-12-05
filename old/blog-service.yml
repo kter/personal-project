@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: jekyll
+  name: wordpress
   labels:
-    name: jekyll
+    name: wordpress
 spec:
   ports:
     - port: 80

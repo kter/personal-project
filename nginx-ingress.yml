@@ -18,11 +18,11 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: wordpress
+          serviceName: jekyll
           servicePort: 80
       - path: /*
         backend:
-          serviceName: wordpress
+          serviceName: jekyll
           servicePort: 80
   - host: wallet.kter.jp
     http:

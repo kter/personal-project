@@ -13,31 +13,6 @@ spec:
     spec:
       containers:
         - name: blog
-          image: wordpress:4.8.3-php7.1-apache
+          image: kter/blog:0.1
           ports:
             - containerPort: 80
-          env:
-            - name: WORDPRESS_DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: app-secrets
-                  key: wordpress_db_password
-            - name: WORDPRESS_DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: app-secrets
-                  key: wordpress_db_user
-            - name: WORDPRESS_DB_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: app-secrets
-                  key: wordpress_db_host
-          volumeMounts:
-              # This name must match the volumes.name below.
-            - name: nfs
-              mountPath: "/var/www/html"
-      volumes:
-        - name: nfs
-          nfs:
-            server: 10.104.230.238
-            path: "/exports"
