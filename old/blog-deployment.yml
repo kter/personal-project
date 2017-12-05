@@ -38,6 +38,7 @@ spec:
               mountPath: "/var/www/html"
       volumes:
         - name: nfs
-          nfs:
-            server: 10.104.230.238
-            path: "/exports"
+          hostPath:
+            path: /data/blog-data-nfs-3
+      nodeSelector:
+        kubernetes.io/hostname: kube-master-01
