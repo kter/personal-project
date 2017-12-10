@@ -12,7 +12,7 @@ spec:
         name: jenkins
     spec:
       containers:
-        - image: jenkins:2.60.3
+        - image: kter/jenkins-bundler:0.1
           name: jenkins
           ports:
             - containerPort: 8080
