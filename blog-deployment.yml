@@ -5,7 +5,7 @@ metadata:
   labels:
     name: blog
 spec:
-  replicas: 2
+  replicas: 4
   template:
     metadata:
       labels:
@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
         - name: blog
-          image: kter/blog:2017121020051512903958
+          image: kter/blog:latest
           ports:
             - containerPort: 80
