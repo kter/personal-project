@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
         - name: blog
-          image: kter/blog:0.1
+          image: kter/blog:0.0.1
           ports:
             - containerPort: 80
