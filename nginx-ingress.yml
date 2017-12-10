@@ -10,7 +10,6 @@ spec:
   - secretName: kubernetes-ingress-tls
     hosts:
       - kter.jp
-      - wallet.kter.jp
       - jenkins.kter.jp
   rules:
   - host: kter.jp
@@ -23,17 +22,6 @@ spec:
       - path: /*
         backend:
           serviceName: jekyll
-          servicePort: 80
-  - host: wallet.kter.jp
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: wallet
-          servicePort: 80
-      - path: /*
-        backend:
-          serviceName: wallet
           servicePort: 80
   - host: jenkins.kter.jp
     http:
