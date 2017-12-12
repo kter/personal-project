@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: logstash
+  namespace: logging
+  labels:
+    name: logstash
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: logstash
+    spec:
+      containers:
+      - image: kter/k8s-logstash:6.0.1-0.0.1
+        name: logstash
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 100m
+        volumeMounts:
+        - name: containers_src
+          mountPath: /var/lib/docker/containers
+        - name: containers_dest
+          mountPath: /var/log/containers
+        - name: logstash_pos
+          mountPath: /data/logstash-pos
+      env:
+# todo
+      volumes:
+      - name: containers_src
+        hostPath:
+          path: /var/lib/docker/containers
+      - name: containers_dest
+        hostPath:
+          path: /var/log/containers
+      - name: logstash_pos
+        hostPath:
+          path: /data/logstash-pos
