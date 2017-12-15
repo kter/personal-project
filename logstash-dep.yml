@@ -6,7 +6,6 @@ metadata:
   labels:
     name: logstash
 spec:
-  replicas: 1
   template:
     metadata:
       labels:
@@ -21,21 +20,20 @@ spec:
           requests:
             cpu: 100m
         volumeMounts:
-        - name: containers_src
+        - name: containers-src
           mountPath: /var/lib/docker/containers
-        - name: containers_dest
+        - name: containers-dest
           mountPath: /var/log/containers
-        - name: logstash_pos
+        - name: logstash-pos
           mountPath: /data/logstash-pos
       env:
-# todo
       volumes:
-      - name: containers_src
+      - name: containers-src
         hostPath:
           path: /var/lib/docker/containers
-      - name: containers_dest
+      - name: containers-dest
         hostPath:
           path: /var/log/containers
-      - name: logstash_pos
+      - name: logstash-pos
         hostPath:
           path: /data/logstash-pos
