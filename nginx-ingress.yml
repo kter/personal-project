@@ -10,7 +10,6 @@ spec:
   - secretName: kubernetes-ingress-tls
     hosts:
       - kter.jp
-      - jenkins.kter.jp
   rules:
   - host: kter.jp
     http:
