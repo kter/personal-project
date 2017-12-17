@@ -23,14 +23,3 @@ spec:
         backend:
           serviceName: jekyll
           servicePort: 80
-  - host: jenkins.kter.jp
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: jenkins
-          servicePort: 8080
-      - path: /*
-        backend:
-          serviceName: jenkins
-          servicePort: 8080
