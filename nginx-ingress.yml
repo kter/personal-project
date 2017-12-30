@@ -10,7 +10,8 @@ spec:
   - secretName: kubernetes-ingress-tls
     hosts:
       - kter.jp
-      - jenkins.kter.jp
+      - prometheus.kter.jp
+      - grafana.kter.jp
   rules:
   - host: kter.jp
     http:
@@ -23,14 +24,25 @@ spec:
         backend:
           serviceName: jekyll
           servicePort: 80
-  - host: jenkins.kter.jp
+  - host: prometheus.kter.jp
     http:
       paths:
       - path: /
         backend:
-          serviceName: jenkins
-          servicePort: 8080
+          serviceName: prometheus-prometheus-server
+          servicePort: 80
       - path: /*
         backend:
-          serviceName: jenkins
-          servicePort: 8080
+          serviceName: prometheus-prometheus-server
+          servicePort: 80
+  - host: grafana.kter.jp
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana-grafana
+          servicePort: 80
+      - path: /*
+        backend:
+          serviceName: grafana-grafana
+          servicePort: 80

@@ -9,6 +9,11 @@ spec:
     - port: 80
       targetPort: 80
       protocol: TCP
+      name: jekyll
+    - port: 9113
+      targetPort: 9113
+      protocol: TCP
+      name: nginx-exporter
   type: NodePort
   selector:
     name: blog
