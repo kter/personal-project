@@ -35,3 +35,6 @@ spec:
                 secretKeyRef:
                   name: app-secrets
                   key: sskabot_access_token_secret
+          resources:
+            requests:
+              cpu: 10m
