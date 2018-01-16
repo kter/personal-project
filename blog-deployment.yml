@@ -19,11 +19,13 @@ spec:
           resources:
             requests:
               cpu: 10m
-        - name: stub-status-exporter
-          image: fish/nginx-exporter:latest
-          args: ["-nginx.scrape_uri=http://localhost/status"]
+        - name: nginx-vts-exporter
+          image: sophos/nginx-vts-exporter
+          env:
+            - name: NGINX_STATUS
+              value: "http://localhost/status/format/json"
           ports:
-            - containerPort: 9113
+            - containerPort: 9913
           resources:
             requests:
               cpu: 10m
