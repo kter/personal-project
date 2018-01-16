@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: shinkansenice
-          image: docker.io/kter/shinkancenice:0.2
+          image: docker.io/kter/shinkancenice:0.3
           env:
             - name: SSKABOT_CONSUMER_KEY
               valueFrom:
