@@ -10,6 +10,9 @@ spec:
     metadata:
       labels:
         name: blog
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '9913'
     spec:
       containers:
         - name: blog
