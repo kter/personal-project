@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: elasticsearch-logging
+  namespace: logging
+  labels:
+    name: elasticsearch-logging
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: elasticsearch-logging
+    spec:
+      containers:
+      - image: docker.elastic.co/elasticsearch/elasticsearch:6.0.1
+        name: elasticsearch-logging
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 100m
+        ports:
+        - containerPort: 9200
+          name: db
+          protocol: TCP
+        - containerPort: 9300
+          name: transport
+          protocol: TCP
+        volumeMounts:
+        - name: es-persistent-storage
+          mountPath: /usr/share/elasticsearch/data
+      volumes:
+      - name: es-persistent-storage
+        hostPath:
+          path: /data/es-logging-data
+      nodeSelector:
+        kubernetes.io/hostname: kube-master-01
