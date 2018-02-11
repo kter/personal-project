@@ -1,0 +1,9 @@
+helm install -f values.yaml \
+--set alertmanager.resources.requests.cpu=10m \
+--set configmapReload.resources.requests.cpu=10m \
+--set kubeStateMetrics.resources.requests.cpu=10m \
+--set nodeExporter.resources.requests.cpu=10m \
+--set pushgateway.resources.requests.cpu=10m \
+--set server.resources.requests.cpu=100m \
+--name prometheus \
+stable/prometheus
