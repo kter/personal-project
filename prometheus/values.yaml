@@ -76,7 +76,8 @@ alertmanager:
   ## Node labels for alertmanager pod assignment
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
-  nodeSelector: {}
+  nodeSelector:
+    cloud.google.com/gke-nodepool: default-pool
 
   persistentVolume:
     ## If true, alertmanager will create/use a Persistent Volume Claim
@@ -131,7 +132,7 @@ alertmanager:
   ## alertmanager resource requests and limits
   ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/
   ##
-  resources: {}
+  resources:
     # limits:
     #   cpu: 10m
     #   memory: 32Mi
@@ -201,7 +202,8 @@ kubeStateMetrics:
   ## Node labels for kube-state-metrics pod assignment
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
-  nodeSelector: {}
+  nodeSelector:
+    cloud.google.com/gke-nodepool: default-pool
 
   ## Annotations to be added to kube-state-metrics pods
   ##
@@ -212,7 +214,7 @@ kubeStateMetrics:
   ## kube-state-metrics resource requests and limits
   ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/
   ##
-  resources: {}
+  resources:
     # limits:
     #   cpu: 10m
     #   memory: 16Mi
@@ -285,7 +287,8 @@ nodeExporter:
   ## Node labels for node-exporter pod assignment
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
-  nodeSelector: {}
+  nodeSelector:
+    cloud.google.com/gke-nodepool: default-pool
 
   ## Annotations to be added to node-exporter pods
   ##
@@ -294,7 +297,7 @@ nodeExporter:
   ## node-exporter resource limits & requests
   ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
   ##
-  resources: {}
+  resources:
     # limits:
     #   cpu: 200m
     #   memory: 50Mi
@@ -402,7 +405,8 @@ server:
 
   ## Node labels for Prometheus server pod assignment
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
-  nodeSelector: {}
+  nodeSelector:
+    cloud.google.com/gke-nodepool: default-pool
 
   persistentVolume:
     ## If true, Prometheus server will create/use a Persistent Volume Claim
@@ -458,7 +462,7 @@ server:
   ## Prometheus server resource requests and limits
   ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/
   ##
-  resources: {}
+  resources:
     # limits:
     #   cpu: 500m
     #   memory: 512Mi
@@ -537,7 +541,8 @@ pushgateway:
   ## Node labels for pushgateway pod assignment
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
-  nodeSelector: {}
+  nodeSelector:
+    cloud.google.com/gke-nodepool: default-pool
 
   ## Annotations to be added to pushgateway pods
   ##
@@ -548,7 +553,7 @@ pushgateway:
   ## pushgateway resource requests and limits
   ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/
   ##
-  resources: {}
+  resources:
     # limits:
     #   cpu: 10m
     #   memory: 32Mi
