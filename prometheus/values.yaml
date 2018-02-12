@@ -135,9 +135,9 @@ alertmanager:
     # limits:
     #   cpu: 10m
     #   memory: 32Mi
-    # requests:
-    #   cpu: 10m
-    #   memory: 32Mi
+    requests:
+      cpu: 10m
+      memory: 32Mi
 
   service:
     annotations: {}
@@ -216,9 +216,9 @@ kubeStateMetrics:
     # limits:
     #   cpu: 10m
     #   memory: 16Mi
-    # requests:
-    #   cpu: 10m
-    #   memory: 16Mi
+    requests:
+      cpu: 10m
+      memory: 16Mi
 
   service:
     annotations:
@@ -298,9 +298,9 @@ nodeExporter:
     # limits:
     #   cpu: 200m
     #   memory: 50Mi
-    # requests:
-    #   cpu: 100m
-    #   memory: 30Mi
+    requests:
+      cpu: 100m
+      memory: 30Mi
 
   service:
     annotations:
@@ -462,9 +462,9 @@ server:
     # limits:
     #   cpu: 500m
     #   memory: 512Mi
-    # requests:
-    #   cpu: 500m
-    #   memory: 512Mi
+    requests:
+      cpu: 500m
+      memory: 512Mi
 
   service:
     annotations: {}
@@ -552,9 +552,9 @@ pushgateway:
     # limits:
     #   cpu: 10m
     #   memory: 32Mi
-    # requests:
-    #   cpu: 10m
-    #   memory: 32Mi
+    requests:
+      cpu: 10m
+      memory: 32Mi
 
   service:
     annotations:
