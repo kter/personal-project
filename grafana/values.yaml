@@ -9,8 +9,8 @@ server:
   image: "grafana/grafana:4.6.3"
 
   extraEnv: {}
-  nodeSelector:
-    cloud.google.com/gke-nodepool: default-pool
+  #nodeSelector:
+  #  cloud.google.com/gke-nodepool: default-pool
   tolerations: []
 
   ingress:

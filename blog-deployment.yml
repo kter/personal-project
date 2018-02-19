@@ -32,5 +32,3 @@ spec:
           resources:
             requests:
               cpu: 10m
-      nodeSelector:
-       cloud.google.com/gke-nodepool: default-pool
