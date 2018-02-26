@@ -57,5 +57,3 @@ spec:
         key: node-role.kubernetes.io/master
       - key: CriticalAddonsOnly
         operator: Exists
-      nodeSelector:
-       cloud.google.com/gke-nodepool: default-pool

@@ -1,5 +1,5 @@
 rbac:
-  create: false
+  create: true
 
 alertmanager:
   ## If false, alertmanager will not be installed
@@ -76,8 +76,8 @@ alertmanager:
   ## Node labels for alertmanager pod assignment
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
-  nodeSelector:
-    cloud.google.com/gke-nodepool: default-pool
+  #nodeSelector:
+  #  cloud.google.com/gke-nodepool: default-pool
 
   persistentVolume:
     ## If true, alertmanager will create/use a Persistent Volume Claim
@@ -154,7 +154,7 @@ alertmanager:
     loadBalancerSourceRanges: []
     servicePort: 80
     # nodePort: 30000
-    type: ClusterIP
+    type: NodePort
 
 ## Monitors ConfigMap changes and POSTs to a URL
 ## Ref: https://github.com/jimmidyson/configmap-reload
@@ -202,8 +202,8 @@ kubeStateMetrics:
   ## Node labels for kube-state-metrics pod assignment
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
-  nodeSelector:
-    cloud.google.com/gke-nodepool: default-pool
+  #nodeSelector:
+  #  cloud.google.com/gke-nodepool: default-pool
 
   ## Annotations to be added to kube-state-metrics pods
   ##
@@ -287,8 +287,8 @@ nodeExporter:
   ## Node labels for node-exporter pod assignment
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
-  nodeSelector:
-    cloud.google.com/gke-nodepool: default-pool
+  #nodeSelector:
+  #  cloud.google.com/gke-nodepool: default-pool
 
   ## Annotations to be added to node-exporter pods
   ##
@@ -405,8 +405,8 @@ server:
 
   ## Node labels for Prometheus server pod assignment
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
-  nodeSelector:
-    cloud.google.com/gke-nodepool: default-pool
+  #nodeSelector:
+  #  cloud.google.com/gke-nodepool: default-pool
 
   persistentVolume:
     ## If true, Prometheus server will create/use a Persistent Volume Claim
@@ -541,8 +541,8 @@ pushgateway:
   ## Node labels for pushgateway pod assignment
   ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
   ##
-  nodeSelector:
-    cloud.google.com/gke-nodepool: default-pool
+  #nodeSelector:
+  #  cloud.google.com/gke-nodepool: default-pool
 
   ## Annotations to be added to pushgateway pods
   ##
