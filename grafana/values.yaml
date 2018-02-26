@@ -130,7 +130,8 @@ server:
 
     ## Grafana service type
     ##
-    type: ClusterIP
+    #type: ClusterIP
+    type: NodePort
 
     ## Grafana service port
     ##
