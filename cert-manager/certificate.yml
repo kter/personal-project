@@ -1,0 +1,29 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: kter-jp-tls
+  namespace: default
+spec:
+  secretName: kter-jp-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: kter.jp
+  dnsNames:
+  - kter.jp
+  - grafana.kter.jp
+  - prometheus.kter.jp
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - kter.jp
+    - http01:
+        ingressClass: nginx
+      domains:
+      - grafana.kter.jp
+    - http01:
+        ingressClass: nginx
+      domains:
+      - prometheus.kter.jp
