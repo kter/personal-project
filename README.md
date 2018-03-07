@@ -40,6 +40,7 @@ cd nginx-ingress
 eval `cat cmd.txt`
 cd ../
 kubectl apply -f nginx-ingress.yml
+cd $HOME/cert-manager
  helm install \
     --name cert-manager \
     --namespace=kube-system \
@@ -47,7 +48,14 @@ kubectl apply -f nginx-ingress.yml
     --set ingressShim.extraArgs='{--default-issuer-name=letsencrypt-prod,--default-issuer-kind=ClusterIssuer}'
 
 #kubectl create secret generic route53-config --from-file=./secretaccesskey.txt -n kube-system
+cd $HOME/root/personal-project/nginx-ingress
 kubectl apply -f ClusterIssuer.yml
 kubectl apply -f certificate.yml
 kubectl describe certificate
 # kubectl get secret route53-config -o=go-template --template '{{index .data "secretaccesskey.txt"}}' | base64 -d
+cd $HOME/keel
+ helm install \
+    --name keel \
+    --namespace=kube-system \
+    chart/keel \
+    -f $HOME/root/personal-project/keel/values.yaml
