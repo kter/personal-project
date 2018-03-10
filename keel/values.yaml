@@ -14,7 +14,7 @@ polling:
 
 # Helm provider support
 helmProvider:
-  enabled: false
+  enabled: true
 
 # Google Container Registry
 # GCP Project ID
@@ -58,9 +58,10 @@ service:
   enabled: false
   type: LoadBalancer
   externalPort: 9300
+  clusterIP: ""
 
 # Webhook Relay service
-# If you don’t want to expose your Keel service, you can use https://webhookrelay.com/
+# If you don't want to expose your Keel service, you can use https://webhookrelay.com/
 # which can deliver webhooks to your internal Keel service through Keel sidecar container.
 webhookRelay:
   enabled: false
@@ -108,3 +109,8 @@ nodeSelector: {}
 # base64 encoded json of GCP service account
 # e.g. --set googleApplicationCredentials=$(cat <JSON_KEY_FIEL> | base64)
 # googleApplicationCredentials: ""
+
+# Enable DEBUG logging
+debug: true
+
+
