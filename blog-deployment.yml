@@ -4,22 +4,23 @@ metadata:
   name: blog
   labels:
     name: blog
+    keel.sh/policy: all
+    keel.sh/trigger: poll
+  annotations:
+    keel.sh/pollSchedule: "@every 1m"
 spec:
   replicas: 2
   template:
     metadata:
       labels:
         name: blog
-        keel.sh/policy: all
-        keel.sh/trigger: poll
       annotations:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '9913'
-        keel.sh/pollSchedule: "@every 1m"
     spec:
       containers:
         - name: blog
-          image: kter/blog:latest
+          image: kter/blog:d881e801a7d7a406fac667ac36b9637598267b76
           ports:
             - containerPort: 80
           resources:
