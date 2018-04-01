@@ -11,6 +11,7 @@ spec:
   commonName: kter.jp
   dnsNames:
   - kter.jp
+  - stg.kter.jp
   - grafana.kter.jp
   - prometheus.kter.jp
   acme:
@@ -19,6 +20,10 @@ spec:
         ingressClass: nginx
       domains:
       - kter.jp
+    - http01:
+        ingressClass: nginx
+      domains:
+      - stg.kter.jp
     - http01:
         ingressClass: nginx
       domains:

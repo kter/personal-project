@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: blog
-          image: kter/blog:d881e801a7d7a406fac667ac36b9637598267b76
+          image: kter/blog:latest
           ports:
             - containerPort: 80
           resources:
@@ -33,6 +33,31 @@ spec:
               value: "http://localhost/status/format/json"
           ports:
             - containerPort: 9913
+          resources:
+            requests:
+              cpu: 10m
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: stg-blog
+  labels:
+    name: stg-blog
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: stg-blog
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '9913'
+    spec:
+      containers:
+        - name: stg-blog
+          image: kter/blog
+          ports:
+            - containerPort: 80
           resources:
             requests:
               cpu: 10m
