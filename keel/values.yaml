@@ -86,6 +86,7 @@ keel:
   trigger: poll
   # polling schedule
   pollSchedule: "@every 3m"
+  approvals: 1
   # images to track and update
   images:
    - repository: image.repository
