@@ -6,6 +6,7 @@ metadata:
     name: blog
     keel.sh/policy: force
     keel.sh/trigger: poll
+    keel.sh/approvals: "1"
   annotations:
     keel.sh/pollSchedule: "@every 1m"
 spec:
