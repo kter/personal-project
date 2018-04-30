@@ -35,6 +35,7 @@ webhook:
 slack:
   enabled: true
   token: "xoxb-324136319651-EQnfZsuR3mVXmYBB8kwdHisS"
+  bot_name: "keel"
   channel: "deploy"
   approvals_channel: "deploy"
 
